@@ -6,7 +6,11 @@ app.service('mainService', function($http) {
     return $http({
 			method: "GET",
 			url: 'http://reqres.in/api/users?page=1'
-		});
+		}).then(function(response){
+      if(response.status === 200){
+        return response.data;
+      };
+    });
   };
 
 });
